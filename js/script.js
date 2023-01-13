@@ -1,12 +1,15 @@
 function runAll(event){
-    event.preventDefault();
+    
 
     handleSelectDifficulty();
     handleSelectCodeUses();
     handleSelectPerformance();
     handleSelectDevType();
     handleSelectInterestedIn();
-    printResults();
+
+    getResult();
+    displayResults();
+    event.preventDefault();
 }
 
 function handleSelectDifficulty() {
@@ -34,7 +37,7 @@ function handleSelectInterestedIn(){
     return chooseInterestedIn
 }
 
-function printResults() {
+function getResult() {
 
    let diff = parseInt(handleSelectDifficulty())
    let code = parseInt(handleSelectCodeUses())
@@ -42,18 +45,27 @@ function printResults() {
    let dev =  parseInt(handleSelectDevType())
    let inter = parseInt(handleSelectInterestedIn())
 
-   const finalResults = document.getElementById("results");
-   if (diff + code + perf + dev + inter >= 5){
-    finalResults = "You Should Code With Python"
-   } else if(diff + code + perf + dev + inter >= 6){
-    finalResults = "You Should Code With JavaScript"
-   } else if(diff + code + perf + dev + inter >= 8){
+   let finalResults
+   let combined = diff + code + perf + dev + inter
+
+   if (combined <= 20 && combined >=10){
     finalResults = "You Should Code With C#"
+   } else if(combined <= 9 && combined >= 8){
+    finalResults = "You Should Code With JavaScript"
+   } else if(combined <= 7 && combined >= 5){
+    finalResults = "You Should Code With Python"
    } else(finalResults = "ERROR")
 
    return finalResults;
 }
 
+function displayResults(){
+    const results = document.getElementById("results");
+    results.innerHTML=(getResult());
+    return results;
+}
+
+
 window.addEventListener("load", function(){
    document.getElementById("whole-form").addEventListener("submit", runAll);
-})
+});
