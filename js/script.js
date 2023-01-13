@@ -6,7 +6,7 @@ function runAll(event){
     handleSelectPerformance();
     handleSelectDevType();
     handleSelectInterestedIn();
-
+    printResults();
 }
 
 function handleSelectDifficulty() {
@@ -36,16 +36,24 @@ function handleSelectInterestedIn(){
 
 function printResults() {
 
-    let diff = parseInt(handleSelectDifficulty())
-    let code = parseInt(handleSelectCodeUses())
-    let perf = parseInt(handleSelectPerformance())
-    let dev =  parseInt(handleSelectDevType())
-    let inter = parseInt(handleSelectInterestedIn())
-    
-    const finalResults = document.getElementById("results")
-    if (diff + code + perf + dev + inter >)
-    }
+   let diff = parseInt(handleSelectDifficulty())
+   let code = parseInt(handleSelectCodeUses())
+   let perf = parseInt(handleSelectPerformance())
+   let dev =  parseInt(handleSelectDevType())
+   let inter = parseInt(handleSelectInterestedIn())
 
-   window.addEventListener("load", function() {
-    document.getElementById("whole-form").addEventListener("submit", runAll);
-   });
+   const finalResults = document.getElementById("results");
+   if (diff + code + perf + dev + inter >= 5){
+    finalResults = "You Should Code With Python"
+   } else if(diff + code + perf + dev + inter >= 6){
+    finalResults = "You Should Code With JavaScript"
+   } else if(diff + code + perf + dev + inter >= 8){
+    finalResults = "You Should Code With C#"
+   } else(finalResults = "ERROR")
+
+   return finalResults;
+}
+
+window.addEventListener("load", function(){
+   document.getElementById("whole-form").addEventListener("submit", runAll);
+})
