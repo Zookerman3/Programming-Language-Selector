@@ -4,6 +4,8 @@
 
 ## This application is a webpage designed to take user inputs and show what programming language they should use based on the users answers
 
+### Setup Instructions: Clone this repo to your computer and open index.html
+
 ### Technologies used include HTML and Javascript
 ### No known bugs at the time of last push
 
